@@ -1,0 +1,78 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        .menubar{
+            background-color: white;
+            display: flex;
+            height: 50px;
+            top: 0;    
+            position: sticky;
+        }
+        .menuul{
+            list-style-type: none;
+            /*padding: 16px;*/
+            padding: 3px;
+            
+        }
+        .navlist{
+            display: inline-block;
+            width: 100px;   
+            font-size: 18px;
+            font-weight: bold;
+            
+        }
+        /*#cos{
+            font-size: 18px;
+            
+        }*/
+        /*a{
+            text-decoration: none;
+            color: black;
+        }*/
+        /*.srch{
+            margin-left: 100px;
+            margin-top: 10px;
+        }
+        #sear{
+            font-size: 18px;
+            width: 400px;
+        }
+        #btn{
+            font-size: 18px;
+        }*/
+        .anch{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menubar">
+        <ul class="menuul">
+            <li id="cos" class="navlist"><a class="anch">Cosmetics</a></li>
+            <li class="navlist"><a href="/" class="anch">Home</a></li>
+            <li class="navlist"><a href="product" class="anch">Product</a></li>
+            {%if user.is_authenticated%}
+            <li class="navlist"><a class="anch">Shopcart</a></li>
+            <a class="anch"><i class="fa-solid fa-cart-shopping"></i></a>
+            <li class="navlist"><a href="logout" class="anch">Logout</a></li>
+            <li class="navlist" style="color: blue;">Welcome:{{user}}</li>
+            {%else%}
+            <li class="navlist"><a href="adduser" class="anch">Registration</a></li>
+            <li class="navlist"><a href="login" class="anch">Login</a></li>
+            {%endif%}
+        </ul>
+        <!--<form class="srch">
+            <input type="search" placeholder="search" id="sear">
+            <button type="submit" id="btn">Search</button>
+        </form>-->
+    </nav>
+</body>
+</html>

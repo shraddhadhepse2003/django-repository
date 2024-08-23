@@ -1,0 +1,39 @@
+{%load static%}
+{%include 'navbar.html'%}
+<link rel="stylesheet" href="{%static 'css/bmin.css'%}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .home{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            opacity: 1;
+            background: url('static/images/homepic.avif')no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .bty{
+            height: 200px;
+            width: 200px;
+            color: black;
+            /*background-color: aqua;*/
+            margin-left: 200px;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <section class="home">
+       <div class="bty">
+        Try our Beauty Products
+       </div>
+    </section>
+    
+</body>
+</html>

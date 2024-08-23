@@ -1,0 +1,25 @@
+{%include 'navbar.html'%}
+
+<table class="table">
+    <tr>
+        <th>Id</th>\
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Quantity</th>
+        <th>Username</th>
+        <th>Subtotal</th>
+        <th>Action</th>
+    </tr>
+
+    {%for i in cl%}
+    <tr>
+        <td>{{i.product.id}}</td>
+        <td>{{i.product.p_name}}</td>
+        <td>{{i.product.p_price}}</td>
+        <td>{{i.user.username}}</td>
+        <td><span></span></td>
+        <td><a href="">Delete</a></td>
+    </tr>
+    {%end for%}
+
+</table>
