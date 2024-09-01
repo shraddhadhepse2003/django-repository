@@ -1,25 +1,69 @@
 {%include 'navbar.html'%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/bmin.css'%}">
 
+<style>
+    body{
+        background-color: white;
+    }
+    .calci{
+        background-color: #E2E7E6;
+        width: 350px;
+        height: 200px;
+        margin-left: 600px;
+        margin-top: 100px;
+        padding-left: 40px;
+        padding-top: 30px;
+        box-shadow:0px 0px 10px black ;
+        position: fixed;
+        top: 30px;
+        right: 20px;
+        box-sizing: border-box;
+    }
+    .cart{
+        width: 70%;
+    }
+</style>
+<div class="cart">
 <table class="table">
     <tr>
-        <th>Id</th>\
+        <!--<th>Id</th>-->
+        <th>Image</th>
         <th>Product Name</th>
         <th>Product Price</th>
         <th>Product Quantity</th>
-        <th>Username</th>
+        <!--<th>Username</th>-->
         <th>Subtotal</th>
         <th>Action</th>
     </tr>
 
     {%for i in cl%}
-    <tr>
-        <td>{{i.product.id}}</td>
+    <tr >
+        <!--<td>{{i.product.id}}</td>-->
+        <td><img src="{{i.product.img}}" alt="image not uploaded" width="100px" height="100px"></td>
         <td>{{i.product.p_name}}</td>
         <td>{{i.product.p_price}}</td>
-        <td>{{i.user.username}}</td>
-        <td><span></span></td>
-        <td><a href="">Delete</a></td>
+        <td><input type="number" name="qty" value="1" min="1" onchange="updateSubtotal(this)"></td>
+        <!--<td>{{i.user.username}}</td>-->
+        <td><input type="text" class="subtotal" value="{{i.product.p_price}}"></td>
+        <td><a href="remove/{{i.id}}">Remove</a></td>
+
+        
     </tr>
-    {%end for%}
+    {%endfor%}
 
 </table>
+</div>
+
+<div class="calci">
+<h3 id="total">Final Total:Rs.<span id="total-value">0.00/-</span></h3>
+<h3 id="gst">GST (18%):Rs.<span id="gst-value">0.00/-</span></h3>
+<h3 id="invoice-total">Final Total:Rs.<span id="invoice-total-value">0.00/-</span></h3>
+</div>
+
+<script src="{%static 'js/bmin.js'%}"></script>
+<script src="{%static 'js/p.js'%}"></script>
+<script src="{%static 'js/static.js'%}"></script>
+
+
+

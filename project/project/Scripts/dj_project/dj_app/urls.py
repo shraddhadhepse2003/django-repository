@@ -26,6 +26,17 @@ urlpatterns = [
     path('logout',v.logout_view),
 
     path('product',v.product_view),
-    path('addtocart/<int:pid>',v.add_to_cart),
+    path('addtocart/<int:pid>',v.add_to_cart,name='addtocart'),
+    path('clist',v.cart_list),
+
+    path('remove/<int:pro>',v.remove_view),
+
+    path('search_product',v.Search),
+    #path('ixt/<str:ixt2>/',v.sortby_type,name='list2'),
+
+    path('product/<str:category_name>/',v.category_page,name='category_page'),
+    path('sidebar',v.sidebar),
+    path('filter/<int:pid>',v.filter_cate),
+
     
 ]

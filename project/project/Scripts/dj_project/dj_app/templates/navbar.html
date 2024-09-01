@@ -1,4 +1,5 @@
 {%load static%}
+{%block content%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,10 @@
     
     <style>
         .menubar{
-            background-color: white;
+            /*background-color: rgb(21, 25, 41);*/
+            background-color: black;
             display: flex;
-            height: 50px;
+            height: 60px;
             top: 0;    
             position: sticky;
         }
@@ -21,58 +23,80 @@
             padding: 3px;
             
         }
+        .menuul li :hover{ 
+            color: blue;           
+        }
         .navlist{
             display: inline-block;
             width: 100px;   
             font-size: 18px;
             font-weight: bold;
+            padding-top: 10px;
+        }
+        .srchinput{
+            width: 300px;
             
         }
-        /*#cos{
-            font-size: 18px;
-            
-        }*/
-        /*a{
-            text-decoration: none;
-            color: black;
-        }*/
-        /*.srch{
-            margin-left: 100px;
-            margin-top: 10px;
-        }
-        #sear{
-            font-size: 18px;
-            width: 400px;
-        }
-        #btn{
-            font-size: 18px;
-        }*/
         .anch{
             text-decoration: none;
-            color: black;
+            color: white;
+            
         }
+        #us{
+            margin-right: 250px;
+            position: absolute;
+            padding-left: 180px;
+        }
+        #lgid{
+            margin-left: 35px;
+        }
+        .fmsrch{
+            padding-top: 14px;
+            margin-left: 500px;
+            display: flex;
+        }
+        #btn{
+            color: white;
+            background-color: black;
+            border: none;
+        }
+        #nam{
+            color: white;
+            font-family: Handjet;
+        }
+        #cos{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
     </style>
 </head>
 <body>
     <nav class="menubar">
         <ul class="menuul">
-            <li id="cos" class="navlist"><a class="anch">Cosmetics</a></li>
-            <li class="navlist"><a href="/" class="anch">Home</a></li>
-            <li class="navlist"><a href="product" class="anch">Product</a></li>
+            <!--<li id="cos" class="navlist"><a class="anch">Cosmetics</a></li>-->
+            <img src="static/images/beautylogo.png" width="120px" height="50px">
+            <li class="navlist" ><a href="/" class="anch" id="home">Home</a></li>
+            <li class="navlist"><a href="/product" class="anch">Product</a></li>
             {%if user.is_authenticated%}
-            <li class="navlist"><a class="anch">Shopcart</a></li>
-            <a class="anch"><i class="fa-solid fa-cart-shopping"></i></a>
+            <li class="navlist"><a href="clist" class="anch">Cart</a></li>
+            <!--<a class="anch"><i class="fa-solid fa-cart-shopping"></i></a>-->
             <li class="navlist"><a href="logout" class="anch">Logout</a></li>
-            <li class="navlist" style="color: blue;">Welcome:{{user}}</li>
+            <li class="navlist" style="color: blue;" id="us">Welcome:<span id="nam">{{user}}</span></li>
             {%else%}
             <li class="navlist"><a href="adduser" class="anch">Registration</a></li>
-            <li class="navlist"><a href="login" class="anch">Login</a></li>
+            <li class="navlist"><a href="login" class="anch" id="lgid">Login</a></li>
             {%endif%}
         </ul>
-        <!--<form class="srch">
-            <input type="search" placeholder="search" id="sear">
-            <button type="submit" id="btn">Search</button>
-        </form>-->
+        
+        <form action="search_product" method="post">
+            <div class="fmsrch">
+            {%csrf_token%}
+            <input type="text" name="srch" placeholder="searchInput" rows="3" cols="60" class="srchinput">
+            <input type="submit" value="search" id="btn">
+            </div>
+        </form>
+    
     </nav>
 </body>
 </html>
+{%endblock content%}
