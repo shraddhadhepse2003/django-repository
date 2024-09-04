@@ -2,13 +2,20 @@
 {%load static%}
 {%block body%}
 <link rel="stylesheet" href="{%static 'css/bmin.css'%}">
+
+<style>
+  body{
+    position: static;
+  }
+</style>
+
 <div class="album py-5 bg-light">
   
     <div class="container">
-    
+      
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {%for i in product%}
-        <h1 id="all_products_heading">{{i.category.c_name}}</h1>
+        <!--<h1 id="all_products_heading">{{i.category.c_name}}</h1>-->
         <div class="col">
           <div class="card shadow-sm">
             

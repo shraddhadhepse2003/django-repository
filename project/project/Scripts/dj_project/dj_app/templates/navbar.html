@@ -13,7 +13,7 @@
             /*background-color: rgb(21, 25, 41);*/
             background-color: black;
             display: flex;
-            height: 60px;
+            height: 55px;
             top: 0;    
             position: sticky;
         }
@@ -21,6 +21,7 @@
             list-style-type: none;
             /*padding: 16px;*/
             padding: 3px;
+            margin-top: 0;
             
         }
         .menuul li :hover{ 
@@ -40,6 +41,8 @@
         .anch{
             text-decoration: none;
             color: white;
+            margin-left: 30px;
+           
             
         }
         #us{
@@ -67,6 +70,11 @@
         #cos{
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
+        #home{
+            font-family: Cedarville Cursive;
+            font-size: 30px;
+            
+        }
         
     </style>
 </head>
@@ -74,10 +82,11 @@
     <nav class="menubar">
         <ul class="menuul">
             <!--<li id="cos" class="navlist"><a class="anch">Cosmetics</a></li>-->
-            <img src="static/images/beautylogo.png" width="120px" height="50px">
-            <li class="navlist" ><a href="/" class="anch" id="home">Home</a></li>
+            <!--<img src="static/images/beautylogo.png" width="120px" height="50px">-->
+            <li class="navlist" ><a href="/" class="anch" id="home"><u><i>Beauty</i></u></a></li>
             <li class="navlist"><a href="/product" class="anch">Product</a></li>
             {%if user.is_authenticated%}
+            
             <li class="navlist"><a href="clist" class="anch">Cart</a></li>
             <!--<a class="anch"><i class="fa-solid fa-cart-shopping"></i></a>-->
             <li class="navlist"><a href="logout" class="anch">Logout</a></li>
@@ -91,7 +100,7 @@
         <form action="search_product" method="post">
             <div class="fmsrch">
             {%csrf_token%}
-            <input type="text" name="srch" placeholder="searchInput" rows="3" cols="60" class="srchinput">
+            <input type="text" name="srch" placeholder="searchProduct" rows="3" cols="60" class="srchinput">
             <input type="submit" value="search" id="btn">
             </div>
         </form>
