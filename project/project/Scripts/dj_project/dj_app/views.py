@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 import razorpay
+
+from django.contrib.auth.hashers import make_password 
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -33,7 +35,11 @@ def add_user(request):
         if user.exists():
             messages.info(request, "Username is already taken")
             return redirect('/adduser')
+
+        u = User(username=uname)
+        u.set_password(passw)  # This hashes the password correctly
         u.save()
+        #u.save()
         return redirect('/')
     else:
         f=UserCreationForm
@@ -49,9 +55,13 @@ def login_view(request):
         user1=User.objects.filter(username=uname)
         if user1.exists():
             if user is not None:
-                request.session['uid']=user.id
-                login(request,user)
-                return redirect('/')
+                if user.is_active:
+                    request.session['uid']=user.id
+                    login(request,user)
+                    return redirect('/')
+                else:
+                    messages.error(request, "Your account is inactive.")
+                    return redirect('/login')
             else:
                 return render(request,'login.html')
                 
@@ -150,11 +160,11 @@ def category_page(request,category_name):
     return render(request,'product.html',context)
 
 def filter_cate(request,pid):
-    uid=request.session.get('uid')
-    user=User.objects.get(id=uid)
+    #uid=request.session.get('uid')
+    #user=User.objects.get(id=uid)
     # cateid=Category.objects.get(id=pid)
     
-    product=Product.objects.filter(user=uid,category_id=pid)
+    product=Product.objects.filter(category_id=pid)
     cate=Category.objects.all()
     pl=Product.objects.all()
     context={'Cate':cate,'product':product,'pl':pl}

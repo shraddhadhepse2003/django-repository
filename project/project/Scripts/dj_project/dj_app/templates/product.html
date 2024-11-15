@@ -7,7 +7,13 @@
   body{
         background-color: #E2E7E6;
     }
- 
+ .btn btn-sm btn-outline-secondary{
+  background-color: #E2E7E6;
+  width: 20px;
+ }
+ #addtobtn{
+  text-decoration: none;
+ }
 </style>
 
 
@@ -32,8 +38,8 @@
               <p class="card-text">{{i.p_description}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" ><a href="addtocart/{{i.id}}">Addtocart</a></button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" ><a href="addtocart/{{i.id}}" id="addtobtn">Addtocart</a></button>
+                  
                 </div>
                 <!--<small class="text-muted">9 mins</small>-->
               </div>

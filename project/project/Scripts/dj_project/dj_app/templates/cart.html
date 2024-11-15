@@ -26,6 +26,9 @@
     .plcbtn{
         margin-left: 80px;
     }
+    #removebtn{
+        text-decoration: none;
+    }
 </style>
 <div class="cart">
 <table class="table">
@@ -61,7 +64,7 @@
         <!--<td>{{i.user.username}}</td>-->
         <!--<td><input type="text" class="subtotal" value="{{i.product.p_price}}"></td>-->
         <td><input type="text" class="subtotal" value="{%widthratio i.product.p_price 1 i.quantity%}" readonly></td>
-        <td><a href="remove/{{i.id}}">Remove</a></td>
+        <td><a href="remove/{{i.id}}" id="removebtn">Remove</a></td>
 
         
     </tr>
